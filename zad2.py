@@ -57,7 +57,7 @@ emp1 = Employee('name1','lname1','hire_date1','birth_date1','city1','street1','z
 emp2 = Employee('name2','lname2','hire_date2','birth_date1','city1','street1','zip1','phone2')
 emp3 = Employee('name3','lname3','hire_date3','birth_date1','city1','street1','zip1','phone3')
 
-from zadanie1cz2 import Student
+from zad1 import Student
 
 student1 = Student('name1',60)
 student2 = Student('name1',50)
@@ -66,8 +66,8 @@ student3 = Student('name1',20)
 order1 = Order(emp3,student3,book5,'order date1')
 order2 = Order(emp2,student2,book2,'order date1')
 
-print(order1)
-print(order2)
+print('order 1:\n{}'.format(order1))
+print('order 1:\n{}'.format(order2))
 
 
 
