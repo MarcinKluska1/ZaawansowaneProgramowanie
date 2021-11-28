@@ -2,7 +2,12 @@ from typing import List
 
 
 class Magazyn:
-    def __init__(self, id_magazynu: int, nazwa_magazynu: str, adres: str, powierzchnia: int, typ_magazynu: str):
+    def __init__(self,
+                 id_magazynu: int,
+                 nazwa_magazynu: str,
+                 adres: str,
+                 powierzchnia: int,
+                 typ_magazynu: str):
         self._id_magazynu = id_magazynu
         self._nazwa_magazynu = nazwa_magazynu
         self._adres = adres
@@ -30,11 +35,20 @@ class Magazyn:
         return self._typ_magazynu
 
     def __str__(self) -> str:
-        return f'{self._id_magazynu},{self._nazwa_magazynu};{self._adres};{self._powierzchnia};{self._typ_magazynu}'
+        return f'{self._id_magazynu},' \
+               f'{self._nazwa_magazynu};' \
+               f'{self._adres};' \
+               f'{self._powierzchnia};' \
+               f'{self._typ_magazynu}'
 
 
 class Produkt:
-    def __init__(self, cena: int, nazwa: str, data_produkcji, magazyn: Magazyn, marka: str):
+    def __init__(self,
+                 cena: int,
+                 nazwa: str,
+                 data_produkcji,
+                 magazyn: Magazyn,
+                 marka: str):
         self._cena = cena
         self._nazwa = nazwa
         self._data_produkcji = data_produkcji
@@ -62,11 +76,20 @@ class Produkt:
         return self._marka
 
     def __str__(self) -> str:
-        return f'{self._cena},{self._nazwa};{self._data_produkcji};{self._magazyn};{self._marka}'
+        return f'{self._cena},' \
+               f'{self._nazwa};' \
+               f'{self._data_produkcji};' \
+               f'{self._magazyn};' \
+               f'{self._marka}'
 
 
 class Klient:
-    def __init__(self, id_klienta: int, adres: str, numer_telefonu: str, kraj: str, karta_stalego_klienta: bool):
+    def __init__(self,
+                 id_klienta: int,
+                 adres: str,
+                 numer_telefonu: str,
+                 kraj: str,
+                 karta_stalego_klienta: bool):
         self._id_klienta = id_klienta
         self._adres = adres
         self._numer_telefonu = numer_telefonu
@@ -94,13 +117,26 @@ class Klient:
         return self._karta_stalego_klienta
 
     def __str__(self) -> str:
-        return f'{self._id_klienta};{self._adres};{self._numer_telefonu},{self._kraj},{self._karta_stalego_klienta}'
+        return f'{self._id_klienta};' \
+               f'{self._adres};' \
+               f'{self._numer_telefonu},' \
+               f'{self._kraj},' \
+               f'{self._karta_stalego_klienta}'
 
 
 class KlientDetaliczny(Klient):
-    def __init__(self, id_klienta: int, adres: str, numer_telefonu: str, kraj: str, karta_stalego_klienta: bool,
+    def __init__(self,
+                 id_klienta: int,
+                 adres: str,
+                 numer_telefonu: str,
+                 kraj: str,
+                 karta_stalego_klienta: bool,
                  imie_nazwisko: str):
-        super().__init__(id_klienta, adres, numer_telefonu, kraj, karta_stalego_klienta)
+        super().__init__(id_klienta,
+                         adres,
+                         numer_telefonu,
+                         kraj,
+                         karta_stalego_klienta)
         self._imie_nazwisko = imie_nazwisko
 
     @property
@@ -112,9 +148,18 @@ class KlientDetaliczny(Klient):
 
 
 class KlientBiznesowy(Klient):
-    def __init__(self, id_klienta: int, adres: str, numer_telefonu: str, kraj: str, nazwa_firmy: str,
+    def __init__(self,
+                 id_klienta: int,
+                 adres: str,
+                 numer_telefonu: str,
+                 kraj: str,
+                 nazwa_firmy: str,
                  karta_stalego_klienta: bool):
-        super().__init__(id_klienta, adres, numer_telefonu, kraj, karta_stalego_klienta)
+        super().__init__(id_klienta,
+                         adres,
+                         numer_telefonu,
+                         kraj,
+                         karta_stalego_klienta)
         self._nazwa_firmy = nazwa_firmy
 
     @property
@@ -167,7 +212,11 @@ class Zamowienie:
         self._data_zamowienia = value
 
     def __str__(self) -> str:
-        return f'Id zamowienia: {self._id_zamowienia}\nKlient: {self._klient}\nLista produktow: {[i.__str__() for i in self._produkty]}\nData realizacji: {self._data_realizacji}\nData zamowienia: {self._data_zamowienia}\n'
+        return f'Id zamowienia: {self._id_zamowienia}\n' \
+               f'Klient: {self._klient}\n' \
+               f'Lista produktow: {[i.__str__() for i in self._produkty]}\n' \
+               f'Data realizacji: {self._data_realizacji}\n' \
+               f'Data zamowienia: {self._data_zamowienia}\n'
 
     def wartoscZamowienia(self) -> float:
         wartosc: float = 0
@@ -180,11 +229,28 @@ class Zamowienie:
         return self._klient.adres
 
 
-zbyszek: KlientDetaliczny = KlientDetaliczny(2, 'adres', '666-666-666', 'Polska', True, 'Zbyszek Wodecki')
+zbyszek: KlientDetaliczny = KlientDetaliczny(2,
+                                             'adres',
+                                             '666-666-666',
+                                             'Polska',
+                                             True,
+                                             'Zbyszek Wodecki')
 magazyn_produktow: Magazyn = Magazyn(3, 'magazyn', 'polna 2', 5, 'zwykly')
-zamowione_produkty: List[Produkt] = [Produkt(5, 'podzespol1', '20-03-2-20', magazyn_produktow, 'marka1'),
-                                     Produkt(3, 'podzespol2', '20-03-2-20', magazyn_produktow, 'marka2'),
-                                     Produkt(6, 'podzespol3', '20-03-2-20', magazyn_produktow, 'marka3')]
+zamowione_produkty: List[Produkt] = [Produkt(5,
+                                             'podzespol1',
+                                             '20-03-2-20',
+                                             magazyn_produktow,
+                                             'marka1'),
+                                     Produkt(3,
+                                             'podzespol2',
+                                             '20-03-2-20',
+                                             magazyn_produktow,
+                                             'marka2'),
+                                     Produkt(6,
+                                             'podzespol3',
+                                             '20-03-2-20',
+                                             magazyn_produktow,
+                                             'marka3')]
 
 nowe_zamowienie: Zamowienie = Zamowienie()
 nowe_zamowienie.id_zamowienia = 3
