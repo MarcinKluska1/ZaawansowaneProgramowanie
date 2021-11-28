@@ -66,11 +66,12 @@ class Produkt:
 
 
 class Klient:
-    def __init__(self, id_klienta: int, adres: str, numer_telefonu: str, kraj: str):
+    def __init__(self, id_klienta: int, adres: str, numer_telefonu: str, kraj: str, karta_stalego_klienta: bool):
         self._id_klienta = id_klienta
         self._adres = adres
         self._numer_telefonu = numer_telefonu
         self._kraj = kraj
+        self._karta_stalego_klienta = karta_stalego_klienta
 
     @property
     def id_klienta(self) -> int:
@@ -88,13 +89,18 @@ class Klient:
     def kraj(self) -> str:
         return self._kraj
 
+    @property
+    def karta_stalego_klienta(self) -> bool:
+        return self._karta_stalego_klienta
+
     def __str__(self) -> str:
-        return f'{self._id_klienta};{self._adres};{self._numer_telefonu},{self._kraj}'
+        return f'{self._id_klienta};{self._adres};{self._numer_telefonu},{self._kraj},{self._karta_stalego_klienta}'
 
 
 class KlientDetaliczny(Klient):
-    def __init__(self, id_klienta: int, adres: str, numer_telefonu: str, kraj: str, imie_nazwisko: str):
-        super().__init__(id_klienta, adres, numer_telefonu, kraj)
+    def __init__(self, id_klienta: int, adres: str, numer_telefonu: str, kraj: str, karta_stalego_klienta: bool,
+                 imie_nazwisko: str):
+        super().__init__(id_klienta, adres, numer_telefonu, kraj, karta_stalego_klienta)
         self._imie_nazwisko = imie_nazwisko
 
     @property
@@ -106,8 +112,9 @@ class KlientDetaliczny(Klient):
 
 
 class KlientBiznesowy(Klient):
-    def __init__(self, id_klienta: int, adres: str, numer_telefonu: str, kraj: str, nazwa_firmy: str):
-        super().__init__(id_klienta, adres, numer_telefonu, kraj)
+    def __init__(self, id_klienta: int, adres: str, numer_telefonu: str, kraj: str, nazwa_firmy: str,
+                 karta_stalego_klienta: bool):
+        super().__init__(id_klienta, adres, numer_telefonu, kraj, karta_stalego_klienta)
         self._nazwa_firmy = nazwa_firmy
 
     @property
@@ -160,7 +167,7 @@ class Zamowienie:
         self._data_zamowienia = value
 
     def __str__(self) -> str:
-        return f'{self._id_zamowienia};{self._klient};{[i.__str__() for i in self._produkty]},{self._data_realizacji};{self._data_zamowienia}'
+        return f'Id zamowienia: {self._id_zamowienia}\nKlient: {self._klient}\nLista produktow: {[i.__str__() for i in self._produkty]}\nData realizacji: {self._data_realizacji}\nData zamowienia: {self._data_zamowienia}\n'
 
     def wartoscZamowienia(self) -> float:
         wartosc: float = 0
@@ -173,11 +180,11 @@ class Zamowienie:
         return self._klient.adres
 
 
-zbyszek: KlientDetaliczny = KlientDetaliczny(2, 'adres', '666-666-666', 'Polska', 'Zbyszek Wodecki')
-magazyn_produktow : Magazyn = Magazyn(3, 'magazyn', 'polna 2', 5, 'zwykly')
-zamowione_produkty : List[Produkt] = [Produkt(5, 'podzespol1', '20-03-2-20', magazyn_produktow, 'marka1'),
-                                      Produkt(3, 'podzespol2', '20-03-2-20', magazyn_produktow, 'marka2'),
-                                      Produkt(6, 'podzespol3', '20-03-2-20', magazyn_produktow, 'marka3')]
+zbyszek: KlientDetaliczny = KlientDetaliczny(2, 'adres', '666-666-666', 'Polska', True, 'Zbyszek Wodecki')
+magazyn_produktow: Magazyn = Magazyn(3, 'magazyn', 'polna 2', 5, 'zwykly')
+zamowione_produkty: List[Produkt] = [Produkt(5, 'podzespol1', '20-03-2-20', magazyn_produktow, 'marka1'),
+                                     Produkt(3, 'podzespol2', '20-03-2-20', magazyn_produktow, 'marka2'),
+                                     Produkt(6, 'podzespol3', '20-03-2-20', magazyn_produktow, 'marka3')]
 
 nowe_zamowienie: Zamowienie = Zamowienie()
 nowe_zamowienie.id_zamowienia = 3
