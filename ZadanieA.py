@@ -1,3 +1,3 @@
-def WypiszImiona(imiona : list):
+def wypiszImiona(imiona: list):
     for imie in imiona:
         print(imie)
