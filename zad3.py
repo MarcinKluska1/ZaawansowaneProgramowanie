@@ -16,7 +16,9 @@ class House(Property):
         self.rozmiar_dzialki: int = rozmiar_dzialki
 
     def __str__(self):
-        return super(House, self).__str__() + ' rozmiar dizalki : {}\n'.format(self.rozmiar_dzialki)
+        return super(House, self) \
+                   .__str__() + ' rozmiar dizalki : {}\n' \
+                   .format(self.rozmiar_dzialki)
 
 
 class Flat(Property):
