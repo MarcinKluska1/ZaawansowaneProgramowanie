@@ -1,5 +1,6 @@
 from magazine.utils import Property
 
+
 class House(Property):
     def __init__(self, area, rooms: int, price, address, rozmiar_dzialki: int):
         super().__init__(area, rooms, price, address)
