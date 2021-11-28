@@ -51,7 +51,7 @@ class Produkt:
         return self._data_produkcji
 
     @property
-    def magazyn(self) ->Magazyn:
+    def magazyn(self) -> Magazyn:
         return self._magazyn
 
     @property
@@ -116,32 +116,45 @@ class KlientBiznesowy(Klient):
 
 
 class Zamowienie:
-    def __init__(self, id_zamowienia: int, klient: Klient, produkty: list, data_realizacji: str, data_zamowienia: str):
-        self._id_zamowienia = id_zamowienia
-        self._klient = klient
-        self._produkty = produkty
-        self._data_realizacji = data_realizacji
-        self._data_zamowienia = data_zamowienia
-
     @property
     def id_zamowienia(self) -> int:
         return self._id_zamowienia
+
+    @id_zamowienia.setter
+    def id_zamowienia(self, value: int) -> None:
+        self._id_zamowienia = value
 
     @property
     def klient(self) -> Klient:
         return self._klient
 
+    @klient.setter
+    def klient(self, value: Klient) -> None:
+        self._klient = value
+
     @property
     def produkty(self) -> str:
         return self._produkty
+
+    @produkty.setter
+    def produkty(self, value: list) -> None:
+        self._produkty = value
 
     @property
     def data_realizacji(self) -> str:
         return self._data_realizacji
 
+    @data_realizacji.setter
+    def data_realizacji(self, value: str) -> None:
+        self._data_realizacji = value
+
     @property
     def data_zamowienia(self) -> str:
         return self._data_zamowienia
+
+    @data_zamowienia.setter
+    def data_zamowienia(self, value: str) -> None:
+        self._data_zamowienia = value
 
     def __str__(self) -> str:
         return f'{self._id_zamowienia};{self._klient};{[i.__str__() for i in self._produkty]},{self._data_realizacji};{self._data_zamowienia}'
@@ -150,6 +163,7 @@ class Zamowienie:
         wartosc: float = 0
         for i in self._produkty:
             wartosc += i.cena
+        wartosc = wartosc + wartosc * 0.23  # zakładając że VAT na elektronikę wynosi 23%
         return round(wartosc, 2)
 
     def adresKlienta(self) -> str:
@@ -161,7 +175,13 @@ magazyn_produktow = Magazyn(3, 'magazyn', 'polna 2', 5, 'zwykly')
 zamowione_produkty = [Produkt(5, 'podzespol1', '20-03-2-20', magazyn_produktow, 'marka1'),
                       Produkt(3, 'podzespol2', '20-03-2-20', magazyn_produktow, 'marka2'),
                       Produkt(6, 'podzespol3', '20-03-2-20', magazyn_produktow, 'marka3')]
-nowe_zamowienie = Zamowienie(3, zbyszek, zamowione_produkty, '20-03-2-20', '09-03-2-20')
+
+nowe_zamowienie = Zamowienie()
+nowe_zamowienie.id_zamowienia = 3
+nowe_zamowienie.klient = zbyszek
+nowe_zamowienie.produkty = zamowione_produkty
+nowe_zamowienie.data_realizacji = '20-03-2-20'
+nowe_zamowienie.data_zamowienia = '20-03-2-20'
 
 print(nowe_zamowienie)
 print(nowe_zamowienie.wartoscZamowienia())
