@@ -173,7 +173,7 @@ class Zamowienie:
         wartosc: float = 0
         for i in self._produkty:
             wartosc += i.cena
-        wartosc = wartosc + wartosc * 0.23  # zakładając że VAT na elektronikę wynosi 23%
+        wartosc *= 1.23  # zakładając że VAT na elektronikę wynosi 23%
         return round(wartosc, 2)
 
     def adresKlienta(self) -> str:
