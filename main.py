@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Magazyn:
     def __init__(self, id_magazynu: int, nazwa_magazynu: str, adres: str, powierzchnia: int, typ_magazynu: str):
         self._id_magazynu = id_magazynu
@@ -133,11 +136,11 @@ class Zamowienie:
         self._klient = value
 
     @property
-    def produkty(self) -> str:
+    def produkty(self) -> List[Produkt]:
         return self._produkty
 
     @produkty.setter
-    def produkty(self, value: list) -> None:
+    def produkty(self, value: List[Produkt]) -> None:
         self._produkty = value
 
     @property
@@ -170,13 +173,13 @@ class Zamowienie:
         return self._klient.adres
 
 
-zbyszek = KlientDetaliczny(2, 'adres', '666-666-666', 'Polska', 'Zbyszek Wodecki')
-magazyn_produktow = Magazyn(3, 'magazyn', 'polna 2', 5, 'zwykly')
-zamowione_produkty = [Produkt(5, 'podzespol1', '20-03-2-20', magazyn_produktow, 'marka1'),
-                      Produkt(3, 'podzespol2', '20-03-2-20', magazyn_produktow, 'marka2'),
-                      Produkt(6, 'podzespol3', '20-03-2-20', magazyn_produktow, 'marka3')]
+zbyszek: KlientDetaliczny = KlientDetaliczny(2, 'adres', '666-666-666', 'Polska', 'Zbyszek Wodecki')
+magazyn_produktow : Magazyn = Magazyn(3, 'magazyn', 'polna 2', 5, 'zwykly')
+zamowione_produkty : List[Produkt] = [Produkt(5, 'podzespol1', '20-03-2-20', magazyn_produktow, 'marka1'),
+                                      Produkt(3, 'podzespol2', '20-03-2-20', magazyn_produktow, 'marka2'),
+                                      Produkt(6, 'podzespol3', '20-03-2-20', magazyn_produktow, 'marka3')]
 
-nowe_zamowienie = Zamowienie()
+nowe_zamowienie: Zamowienie = Zamowienie()
 nowe_zamowienie.id_zamowienia = 3
 nowe_zamowienie.klient = zbyszek
 nowe_zamowienie.produkty = zamowione_produkty
