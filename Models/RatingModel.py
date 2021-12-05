@@ -1,5 +1,9 @@
 class Rating:
-    def __init__(self, userId: int, movieId: int, rating: float, timestamp: int):
+    def __init__(self,
+                 userId: int,
+                 movieId: int,
+                 rating: float,
+                 timestamp: int):
         self._userId = userId
         self._movieId = movieId
         self._rating = rating

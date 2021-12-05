@@ -12,7 +12,10 @@ class FileService:
             lines: list[str] = movieFile.readlines()[1:]
             for line in lines:
                 lineSplit = line[0:-1].split(',')
-                movies.append(Movie(lineSplit[0], lineSplit[1], lineSplit[2]).__dict__)
+                movies.append(Movie(lineSplit[0],
+                                    lineSplit[1],
+                                    lineSplit[2])
+                              .__dict__)
         return movies
 
     @staticmethod
@@ -22,7 +25,11 @@ class FileService:
             lines: list[str] = tagFile.readlines()[1:]
             for line in lines:
                 lineSplit = line[0:-1].split(',')
-                tags.append(Tag(lineSplit[0], lineSplit[1], lineSplit[2], lineSplit[3]).__dict__)
+                tags.append(Tag(lineSplit[0],
+                                lineSplit[1],
+                                lineSplit[2],
+                                lineSplit[3])
+                            .__dict__)
         return tags
 
     @staticmethod
@@ -32,15 +39,24 @@ class FileService:
             lines: list[str] = linkFile.readlines()[1:]
             for line in lines:
                 lineSplit = line[0:-1].split(',')
-                links.append(Link(lineSplit[0], lineSplit[1], lineSplit[2]).__dict__)
+                links.append(Link(lineSplit[0],
+                                  lineSplit[1],
+                                  lineSplit[2])
+                             .__dict__)
         return links
 
     @staticmethod
     def getRatings() -> list[Rating.__dict__]:
-        ratings: list[Rating] = []
-        with open("data/ratings.csv", mode="r", encoding="utf-8") as ratingFile:
+        ratings: list[Rating.__dict__] = []
+        with open("data/ratings.csv",
+                  mode="r",
+                  encoding="utf-8") as ratingFile:
             lines: list[str] = ratingFile.readlines()[1:]
             for line in lines:
                 lineSplit = line[0:-1].split(',')
-                ratings.append(Rating(lineSplit[0], lineSplit[1], lineSplit[2], lineSplit[3]).__dict__)
+                ratings.append(Rating(lineSplit[0],
+                                      lineSplit[1],
+                                      lineSplit[2],
+                                      lineSplit[3])
+                               .__dict__)
         return ratings
