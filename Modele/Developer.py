@@ -25,4 +25,4 @@ class Developer:
         return f'Id: {self._id};' \
                f'Adres: {self._adres};' \
                f'Telefon: {self._telefon};' \
-               f'Nazwa firmy: {self._nazwaFirmy}\n'
+               f'Nazwa firmy: {self._nazwaFirmy}'

@@ -34,8 +34,8 @@ class Nieruchomosc:
         return self._cenaZaMetr
 
     def __str__(self):
-        return f'Id: {self._id};' \
-               f'Developer: {self._developer};' \
-               f'Adres: {self._adres};' \
-               f'Metraz: {self._metraz};' \
-               f'CenaZaMetr: {self._cenaZaMetr}'
+        return f'Id: {self._id};\n' \
+               f'Developer: {self._developer};\n' \
+               f'Adres: {self._adres};\n' \
+               f'Metraz: {self._metraz};\n' \
+               f'CenaZaMetr: {self._cenaZaMetr};\n'

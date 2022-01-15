@@ -51,9 +51,12 @@ class Zamowienie:
         return round(wartosc, 2)
 
     def __str__(self):
+        nieruchomosciTekst = ''
+        for i in self._nieruchomosci:
+            nieruchomosciTekst+= i.__str__()+ '\n'
         return f'Id: {self._id}\n' \
-               f'Nieruchomosci:' \
-               f' {[i.__str__() for i in self._nieruchomosci]}\n' \
+               f'Nieruchomosci:\n' \
+               f' {nieruchomosciTekst}\n' \
                f'Kraj: {self._kraj}\n' \
                f'Nazwa klienta: {self._nazwaKlienta}\n' \
                f'Wartosc zamowienie: {self.wartoscZamowienia()}'
