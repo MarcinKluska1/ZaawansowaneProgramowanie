@@ -50,6 +50,12 @@ class Zamowienie:
             wartosc += i.cenaZaMetr * i.metraz
         return round(wartosc, 2)
 
+    def liczbaMetrow(self)-> int:
+        wartosc: int = 0
+        for i in self._nieruchomosci:
+            wartosc += i.metraz
+        return wartosc
+
     def __str__(self):
         nieruchomosciTekst = ''
         for i in self._nieruchomosci:
@@ -59,4 +65,5 @@ class Zamowienie:
                f' {nieruchomosciTekst}\n' \
                f'Kraj: {self._kraj}\n' \
                f'Nazwa klienta: {self._nazwaKlienta}\n' \
-               f'Wartosc zamowienie: {self.wartoscZamowienia()}'
+               f'Wartosc zamowienie: {self.wartoscZamowienia()}\n' \
+               f'Metraz: {self.liczbaMetrow()}\n'
